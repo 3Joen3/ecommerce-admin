@@ -6,7 +6,7 @@ import { sideMenuLinks } from "@/lib/nav-links";
 
 export default function SideMenu() {
   return (
-    <aside className="h-screen w-1/6 bg-[#F5F5F5] text-[#6C757D]">
+    <aside className="h-screen w-1/6 bg-neutral-800 text-white">
       <nav>
         <ul className="p-3">
           {sideMenuLinks.map((link) => (

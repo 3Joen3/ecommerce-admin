@@ -17,11 +17,7 @@ export default function NavLink({ Icon, title, href }: Props) {
   return (
     <Link
       className={`rounded-xl flex items-center gap-3 p-1.5 w-full
-      ${
-        isActive
-          ? "bg-blue-100 text-blue-700"
-          : "hover:bg-[#e9ecef] hover:text-[#5a6268]"
-      }`}
+      ${isActive ? "bg-blue-500" : "hover:bg-neutral-700"}`}
       href={href}
     >
       {Icon ? (
