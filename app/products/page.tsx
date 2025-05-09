@@ -1,3 +1,10 @@
+import NavLink from "@/components/NavLink";
+import Page from "@/components/Page";
+
 export default function page() {
-  return <div>Enter</div>;
+  return (
+    <Page title="Products">
+      <NavLink title="Add Product" href="products/new" />
+    </Page>
+  );
 }
