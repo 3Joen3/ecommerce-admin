@@ -13,7 +13,7 @@ interface Props {
 
 export default function NavLink({ Icon, title, href }: Props) {
   const currentPath = usePathname();
-  const isActive = currentPath === href;
+  const isActive = currentPath === href || currentPath.startsWith(`${href}/`);
   return (
     <Link
       className={`rounded-xl flex items-center gap-3 p-1.5 w-full

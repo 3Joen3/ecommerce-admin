@@ -16,7 +16,12 @@ export default function NavGroup({ title, href, Icon, subLinks }: Props) {
   const currentPath = usePathname();
 
   const shouldBeOpen =
-    currentPath === href || subLinks.some((sub) => sub.href === currentPath);
+    currentPath === href ||
+    currentPath.startsWith(`${href}/`) ||
+    subLinks.some(
+      (sub) =>
+        currentPath === sub.href || currentPath.startsWith(`${sub.href}/`)
+    );
 
   return (
     <li>
