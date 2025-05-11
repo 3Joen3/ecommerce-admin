@@ -1,5 +1,5 @@
-import NavLink from "@/components/NavLink";
-import Page from "@/components/Page";
+import NavLink from "@/ui/components/NavLink";
+import Page from "@/ui/components/Page";
 
 export default function page() {
   return (

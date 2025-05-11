@@ -1,8 +1,8 @@
-import HomeIcon from "@/components/Icons/HomeIcon";
-import InboxIcon from "@/components/Icons/InboxIcon";
-import TagIcon from "@/components/Icons/TagIcon";
+import HomeIcon from "@/ui/Icons/HomeIcon";
+import InboxIcon from "@/ui/Icons/InboxIcon";
+import TagIcon from "@/ui/Icons/TagIcon";
 
-import { Props as NavGroupProps } from "@/components/SideMenu/NavGroup";
+import { Props as NavGroupProps } from "@/ui/SideMenu/NavGroup";
 
 export const sideMenuLinks: NavGroupProps[] = [
   {
