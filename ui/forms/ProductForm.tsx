@@ -2,12 +2,15 @@
 
 import Section from "../components/Section";
 import Form from "./components/Form";
+import PriceField from "./components/PriceField";
 import TextAreaField from "./components/TextAreaField";
 import TextField from "./components/TextField";
 
 interface FormValues {
   title: string;
   description: string;
+  comparePrice: string;
+  price: string;
 }
 
 export default function ProductForm() {
@@ -24,6 +27,20 @@ export default function ProductForm() {
           placeholder="Supersnygg tisha i färgen röd!"
           name="description"
         />
+        <div className="grid grid-cols-2 gap-8">
+          <PriceField
+            label="Price"
+            name="price"
+            placeholder="299"
+            currency="SEK"
+          />
+          <PriceField
+            label="Compare price"
+            name="comparePrice"
+            placeholder="499"
+            currency="SEK"
+          />
+        </div>
       </Section>
 
       <Section>
