@@ -12,7 +12,7 @@ export default function TextField({ label, name, ...rest }: Props) {
 
   return (
     <Field label={label}>
-      <input className="input" {...register(name)} {...rest} />
+      <input type="text" className="input" {...register(name)} {...rest} />
     </Field>
   );
 }
