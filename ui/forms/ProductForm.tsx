@@ -5,12 +5,14 @@ import Form from "./components/Form";
 import PriceField from "./components/PriceField";
 import TextAreaField from "./components/TextAreaField";
 import TextField from "./components/TextField";
+import MediaField from "./components/MediaField";
 
 interface FormValues {
   title: string;
   description: string;
   comparePrice: string;
   price: string;
+  media: File[];
 }
 
 export default function ProductForm() {
@@ -19,7 +21,7 @@ export default function ProductForm() {
   }
 
   return (
-    <Form onSubmit={onSubmit} className="w-2/3 space-y-5">
+    <Form onSubmit={onSubmit} className="grid grid-cols-2 gap-10">
       <Section>
         <TextField label="Title" placeholder="Röd t-shirt" name="title" />
         <TextAreaField
@@ -41,6 +43,10 @@ export default function ProductForm() {
             currency="SEK"
           />
         </div>
+      </Section>
+
+      <Section>
+        <MediaField name="media" />
       </Section>
 
       <Section>
