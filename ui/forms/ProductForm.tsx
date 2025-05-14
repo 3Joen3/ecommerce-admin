@@ -2,10 +2,9 @@
 
 import Section from "../components/Section";
 import Form from "./components/Form";
-import PriceField from "./components/PriceField";
 import TextAreaField from "./components/TextAreaField";
 import TextField from "./components/TextField";
-import MediaField from "./components/MediaField";
+import MediaField from "./components/MediaField/MediaField";
 
 interface FormValues {
   title: string;
@@ -21,7 +20,7 @@ export default function ProductForm() {
   }
 
   return (
-    <Form onSubmit={onSubmit} className="grid grid-cols-2 gap-10">
+    <Form onSubmit={onSubmit} className="flex flex-col gap-10 w-3/5">
       <Section>
         <TextField label="Title" placeholder="Röd t-shirt" name="title" />
         <TextAreaField
@@ -29,23 +28,6 @@ export default function ProductForm() {
           placeholder="Supersnygg tisha i färgen röd!"
           name="description"
         />
-        <div className="grid grid-cols-2 gap-8">
-          <PriceField
-            label="Price"
-            name="price"
-            placeholder="299"
-            currency="SEK"
-          />
-          <PriceField
-            label="Compare price"
-            name="comparePrice"
-            placeholder="499"
-            currency="SEK"
-          />
-        </div>
-      </Section>
-
-      <Section>
         <MediaField name="media" />
       </Section>
 
