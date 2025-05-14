@@ -30,7 +30,7 @@ export default function DropZone({
   }, [isDragActive, setIsDragActive]);
 
   return (
-    <div {...getRootProps()} className={className}>
+    <div {...getRootProps()} className={`cursor-pointer border ${className}`}>
       <input {...getInputProps()} />
       {children}
     </div>
