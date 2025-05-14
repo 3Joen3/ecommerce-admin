@@ -30,7 +30,7 @@ export default function DropZone({
   }, [isDragActive, setIsDragActive]);
 
   return (
-    <div {...getRootProps()} className={`cursor-pointer border ${className}`}>
+    <div {...getRootProps()} className={`cursor-pointer border-2 border-dashed hover:bg-neutral-100 ${className}`}>
       <input {...getInputProps()} />
       {children}
     </div>
