@@ -5,7 +5,7 @@ interface Props {
 
 export default function Field({ label, children }: Props) {
   return (
-    <div className="flex flex-col gap-1.5">
+    <div className="flex flex-col gap-2">
       <label className="text-lg text-neutral-800">{label}</label>
       {children}
     </div>
