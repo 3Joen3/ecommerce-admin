@@ -1,5 +1,6 @@
 import { useFormContext } from "react-hook-form";
 import Field from "./Field";
+import { ErrorMessage } from "@hookform/error-message";
 
 interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
   label: string;
@@ -19,10 +20,11 @@ export default function PriceField({ label, name, currency, ...rest }: Props) {
         <input
           type="number"
           className="input input-no-arrows w-full"
-          {...register(name)}
+          {...register(name, {valueAsNumber: true})}
           {...rest}
         />
       </div>
+      <ErrorMessage name={name} />
     </Field>
   );
 }
