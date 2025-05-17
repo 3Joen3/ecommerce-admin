@@ -10,7 +10,7 @@ export default function TextAreaField({ label, name, ...rest }: Props) {
   const { register } = useFormContext();
 
   return (
-    <Field label={label}>
+    <Field label={label} name={name}>
       <textarea className="input resize-none" {...register(name)} {...rest} />
     </Field>
   );

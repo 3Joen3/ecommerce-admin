@@ -1,6 +1,5 @@
-import { useFormContext } from "react-hook-form";
 import Field from "./Field";
-import { ErrorMessage } from "@hookform/error-message";
+import { useFormContext } from "react-hook-form";
 
 interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
   label: string;
@@ -12,7 +11,7 @@ export default function PriceField({ label, name, currency, ...rest }: Props) {
   const { register } = useFormContext();
 
   return (
-    <Field label={label}>
+    <Field label={label} name={name}>
       <div className="relative">
         <span className="absolute right-3 top-1/2 -translate-y-1/2 text-sm pointer-events-none text-neutral-600">
           {currency}
@@ -24,7 +23,6 @@ export default function PriceField({ label, name, currency, ...rest }: Props) {
           {...rest}
         />
       </div>
-      <ErrorMessage name={name} />
     </Field>
   );
 }

@@ -26,7 +26,7 @@ export default function MediaField({ name }: Props) {
   }, [files, setValue]);
 
   return (
-    <Field label="Add Media">
+    <Field label="Add Media" name={name}>
       {files.length < 1 ? (
         <Empty handleFiles={handleFiles} />
       ) : (

@@ -11,7 +11,7 @@ export default function TextField({ label, name, ...rest }: Props) {
   const { register } = useFormContext();
 
   return (
-    <Field label={label}>
+    <Field label={label} name={name}>
       <input type="text" className="input" {...register(name)} {...rest} />
     </Field>
   );
