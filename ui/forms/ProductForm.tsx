@@ -1,19 +1,20 @@
 "use client";
 
-import Section from "../components/Section";
 import Form from "./components/Form";
-import TextAreaField from "./components/TextAreaField";
+import Section from "../components/Section";
 import TextField from "./components/TextField";
+import TextAreaField from "./components/TextAreaField";
 import MediaField from "./components/MediaField/MediaField";
-import PriceField from "./components/PriceField"; 
+import PriceField from "./components/PriceField";
+import Submit from "./components/Submit";
 
 import { ProductFormValues } from "@/lib/schemas/product-form";
 import { productSchema } from "@/lib/schemas/product-form";
+import { createProduct } from "@/lib/api/products";
 
 export default function ProductForm() {
-  function onSubmit(data: ProductFormValues) {
-    console.log("HI");
-    console.log(data);
+  async function onSubmit(data: ProductFormValues) {
+    await createProduct(data);
   }
 
   return (
@@ -33,14 +34,16 @@ export default function ProductForm() {
       </Section>
 
       <Section>
-        <PriceField name="price" label="Price" currency="SEK" />
-        <PriceField name="comparePrice" label="Compare price" currency="SEK" />
+        <PriceField name="variants[0].price" label="Price" currency="SEK" />
+        <PriceField
+          name="variants[0].comparePrice"
+          label="Compare price"
+          currency="SEK"
+        />
       </Section>
 
       <Section>
-        <button type="submit" className="btn primary">
-          Save
-        </button>
+        <Submit />
       </Section>
     </Form>
   );

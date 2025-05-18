@@ -1,10 +1,15 @@
 import { z } from "zod";
 
-export const productSchema = z.object({
-  title: z.string().min(1),
-  description: z.string(),
+const variant = z.object({
   price: z.number().nonnegative(),
   comparePrice: z.number().nonnegative(),
+});
+
+
+export const productSchema = z.object({
+  title: z.string().min(1),
+  variants: z.array(variant),
+  description: z.string(),
   media: z.array(z.instanceof(File)),
 });
 
