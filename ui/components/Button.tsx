@@ -1,7 +1,7 @@
 import { SVGProps } from "react";
 
 interface Props {
-  colors?: string;
+  colors: string;
   type?: "submit" | "reset";
   Icon?: React.ComponentType<SVGProps<SVGSVGElement>>;
   label: string;
