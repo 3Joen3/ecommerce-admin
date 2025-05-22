@@ -1,6 +1,6 @@
 "use server";
 
-export const backendUrl = "http://localhost:5070";
+const backendUrl = "http://localhost:5070";
 
 export async function post<T>(
   endpoint: string,
