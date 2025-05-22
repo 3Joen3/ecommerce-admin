@@ -13,36 +13,28 @@ export async function post<T>(
     ? undefined
     : { "Content-Type": "application/json" };
 
-  try {
-    const response = await fetch(url, {
-      method: "POST",
-      body: body,
-      headers: headers,
-    });
+  const response = await fetch(url, {
+    method: "POST",
+    body: body,
+    headers: headers,
+  });
 
-    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+  if (!response.ok)
+    throw new Error(`[post] ${url} failed (HTTP: ${response.status})`);
 
-    return (await response.json()) as T;
-  } catch (error) {
-    console.error(`[post] Error fetching ${url}`, error);
-    throw error;
-  }
+  return (await response.json()) as T;
 }
 
 export async function get<T>(endpoint: string): Promise<T> {
   const url = `${backendUrl}/${endpoint}`;
 
-  try {
-    const response = await fetch(url, {
-      method: "GET",
-      headers: { Accept: "application/json" },
-    });
+  const response = await fetch(url, {
+    method: "GET",
+    headers: { Accept: "application/json" },
+  });
 
-    if (!response.ok) throw new Error(`HTTP: ${response.status}`);
+  if (!response.ok)
+    throw new Error(`[get] ${url} failed (HTTP: ${response.status})`);
 
-    return (await response.json()) as T;
-  } catch (error) {
-    console.error(`[get] Error fetching ${url}:`, error);
-    throw error;
-  }
+  return (await response.json()) as T;
 }
