@@ -3,10 +3,10 @@ import Section from "@/ui/components/Section";
 import ProductListItem from "@/ui/components/ProductListItem";
 import NavLink from "@/ui/components/NavLink";
 
-import { getAllProducts } from "@/lib/api/products";
+import { getProducts } from "@/lib/api/products";
 
 export default async function page() {
-  const products = await getAllProducts();
+  const products = await getProducts();
 
   return (
     <Page title="Products">
