@@ -11,8 +11,8 @@ export default function Button({ colors, type, Icon, label }: Props) {
   return (
     <button
       type={type ? type : "button"}
-      className={`hover:cursor-pointer p-1.5 rounded items-center ${
-        Icon ? " flex gap-1.5" : ""
+      className={`hover:cursor-pointer p-1.5 rounded inline-flex items-center justify-center ${
+        Icon ? "gap-1.5" : ""
       } ${colors}`}
     >
       {Icon && <Icon className="size-4" />}
