@@ -9,7 +9,7 @@ interface Props {
   name: string;
 }
 
-export default function MediaField({ name }: Props) {
+export default function ImagesField({ name }: Props) {
   const { register, setValue } = useFormContext();
   const [files, setFiles] = useState<File[]>([]);
 
@@ -26,7 +26,7 @@ export default function MediaField({ name }: Props) {
   }, [files, setValue]);
 
   return (
-    <Field label="Add Media" name={name}>
+    <Field label="Add Images" name={name}>
       {files.length < 1 ? (
         <Empty handleFiles={handleFiles} />
       ) : (
