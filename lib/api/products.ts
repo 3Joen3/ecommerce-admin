@@ -1,32 +1,19 @@
 "use server";
 
-import { ProductFormValues } from "../schemas/product-form";
+import { get, post } from "./utils";
 import { Product } from "../types/Product";
-import { get } from "./utils";
+import { ProductFormValues } from "../schemas/product-form";
 
-const productsUrl = `${backendUrl}/products`;
 const endpoint = "products";
 
 export async function getProducts(): Promise<Product[]> {
   const products = await get<Product[]>(endpoint);
-  try {
-    return products;
-  } catch {
-    return [];
-  }
+  return products;
 }
 
 export async function createProduct(data: ProductFormValues) {
-  try {
-    var formData = convertToFormData(data);
-
-    const response = await fetch(productsUrl, {
-      method: "POST",
-      body: formData,
-    });
-  } catch (error) {
-    console.log("Error occurred when trying to create product.", error);
-  }
+  var formData = convertToFormData(data);
+  await post(endpoint, formData, true);
 }
 
 function convertToFormData(data: ProductFormValues): FormData {
@@ -35,6 +22,13 @@ function convertToFormData(data: ProductFormValues): FormData {
   formData.append("title", data.title);
   formData.append("description", data.description);
 
+  appendVariantPricing(formData, data);
+  appendImages(formData, data);
+
+  return formData;
+}
+
+function appendVariantPricing(formData: FormData, data: ProductFormValues) {
   data.variants.forEach((v, index) => {
     formData.append(
       `variants[${index}].price`,
@@ -45,12 +39,12 @@ function convertToFormData(data: ProductFormValues): FormData {
       data.variants[index].comparePrice.toString()
     );
   });
+}
 
+function appendImages(formData: FormData, data: ProductFormValues) {
   data.images.forEach((file, i) => {
-    formData.append(`images[${i}].Image`, file);
+    formData.append(`images[${i}].Image`, file, file.name);
     formData.append(`images[${i}].TempId`, i.toString());
     formData.append(`images[${i}].AltText`, file.name);
   });
-
-  return formData;
 }
