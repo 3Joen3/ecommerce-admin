@@ -8,12 +8,11 @@ const productsUrl = `${backendUrl}/products`;
 export async function createProduct(data: ProductFormValues) {
   try {
     var formData = convertToFormData(data);
- 
+
     const response = await fetch(productsUrl, {
       method: "POST",
       body: formData,
     });
-
   } catch (error) {
     console.log("Error occurred when trying to create product.", error);
   }
@@ -36,7 +35,11 @@ function convertToFormData(data: ProductFormValues): FormData {
     );
   });
 
-  data.media.forEach((file) => formData.append("media", file));
+  data.images.forEach((file, i) => {
+    formData.append(`images[${i}].Image`, file);
+    formData.append(`images[${i}].TempId`, i.toString());
+    formData.append(`images[${i}].AltText`, file.name);
+  });
 
   return formData;
 }
