@@ -1,9 +1,26 @@
 "use server";
 
 import { ProductFormValues } from "../schemas/product-form";
+import { Product } from "../types/Product";
 import { backendUrl } from "./utils";
 
 const productsUrl = `${backendUrl}/products`;
+
+export async function getAllProducts(): Promise<Product[]> {
+  try {
+    const response = await fetch(productsUrl);
+
+    if (!response.ok) {
+      throw new Error(`${response.status}`);
+    }
+
+    const data = (await response.json()) as Product[];
+    return data;
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
+}
 
 export async function createProduct(data: ProductFormValues) {
   try {
