@@ -2,6 +2,19 @@
 
 const backendUrl = "http://localhost:5070";
 
+async function remove<T>(endpoint: string, id: string): Promise<T> {
+  const url = `${backendUrl}/${endpoint}/${id}`;
+
+  var response = await fetch(url, {
+    method: "DELETE",
+  });
+
+  if (!response.ok)
+    throw new Error(`[remove] ${url} failed (HTTP: ${response.status})`);
+
+  return (await response.json()) as T;
+}
+
 export async function post<T>(
   endpoint: string,
   data: any,
