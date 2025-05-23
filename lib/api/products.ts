@@ -1,19 +1,23 @@
 "use server";
 
-import { get, post } from "./utils";
+import { post, get, remove } from "./utils";
 import { Product } from "../types/Product";
 import { ProductFormValues } from "../schemas/product-form";
 
 const endpoint = "products";
+
+export async function createProduct(data: ProductFormValues) {
+  var formData = convertToFormData(data);
+  await post(endpoint, formData, true);
+}
 
 export async function getProducts(): Promise<Product[]> {
   const products = await get<Product[]>(endpoint);
   return products;
 }
 
-export async function createProduct(data: ProductFormValues) {
-  var formData = convertToFormData(data);
-  await post(endpoint, formData, true);
+export async function deleteProduct(id: string) {
+  await remove(endpoint, id);
 }
 
 function convertToFormData(data: ProductFormValues): FormData {
