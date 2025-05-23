@@ -9,7 +9,7 @@ export default async function page() {
   const products = await getProducts();
 
   return (
-    <Page title="Products">
+    <Page title="Products" actions={<Actions />}>
       <Section>
         <div className="grid gap-4 grid-cols-4">
           {products.map((product) => (
@@ -22,7 +22,16 @@ export default async function page() {
           ))}
         </div>
       </Section>
-      <NavLink title="Add Product" href="products/new" />
     </Page>
+  );
+}
+
+function Actions() {
+  return (
+    <NavLink
+      colors="bg-black text-white"
+      href="products/new"
+      label="Add Product"
+    />
   );
 }
