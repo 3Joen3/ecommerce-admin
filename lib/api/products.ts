@@ -16,7 +16,7 @@ export async function getProducts(): Promise<Product[]> {
   return products;
 }
 
-export async function deleteProduct(id: string) {
+export async function deleteProduct(id: string): Promise<void> {
   await remove(endpoint, id);
 }
 
