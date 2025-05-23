@@ -5,11 +5,13 @@ interface Props {
   type?: "submit" | "reset";
   Icon?: React.ComponentType<SVGProps<SVGSVGElement>>;
   label: string;
+  onClick: () => void;
 }
 
-export default function Button({ colors, type, Icon, label }: Props) {
+export default function Button({ colors, type, Icon, label, onClick }: Props) {
   return (
     <button
+      onClick={onClick}
       type={type ? type : "button"}
       className={`hover:cursor-pointer p-1.5 rounded inline-flex items-center justify-center ${
         Icon ? "gap-1.5" : ""
