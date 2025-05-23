@@ -2,7 +2,7 @@
 
 const backendUrl = "http://localhost:5070";
 
-async function remove<T>(endpoint: string, id: string): Promise<T> {
+export async function remove<T>(endpoint: string, id: string): Promise<T> {
   const url = `${backendUrl}/${endpoint}/${id}`;
 
   var response = await fetch(url, {
